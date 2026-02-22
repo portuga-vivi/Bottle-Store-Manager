@@ -3,7 +3,7 @@
     define('HOST', 'localhost');
     define('USUARIO', 'root');
     define('SENHA', '');
-    define('DB', 'login');
+    define('DB', 'your_database');
 
 
     $conexao = mysqli_connect(HOST, USUARIO, SENHA, DB) or die ('Não foi possível conectar!');
