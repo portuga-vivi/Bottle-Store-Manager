@@ -1,0 +1,278 @@
+button {
+  width: 100%;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  font-size: 16px;
+  margin-top: 10px;
+  border: 2px solid #a8dadc;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.3s;
+  background: #a8dadc;
+}
+
+/* Make text/number inputs clearly look like inputs */
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 8px;
+
+  background: #ffffff; /* visible contrast */
+  color: #111827; /* dark text */
+  border: 2px solid #a8dadc;
+  border-radius: 10px;
+  outline: none;
+
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Placeholder contrast */
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+/* Focus state so it’s obvious */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #457b9d;
+  box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.25);
+}
+
+/* If some CSS made inputs "transparent", force it off */
+/* Only remove appearance where needed */
+input[type="text"],
+input[type="number"],
+input[type="file"],
+textarea,
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Restore checkbox visuals */
+input[type="checkbox"] {
+  -webkit-appearance: checkbox;
+  appearance: checkbox;
+  accent-color: var(--primary-dark);
+}
+
+:root {
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --primary: #a8dadc;
+  --primary-dark: #7fc6c9;
+  --shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  background:
+        /* very soft teal glow (top-left) */ radial-gradient(
+      900px 500px at 10% 0%,
+      rgba(168, 218, 220, 0.18),
+      transparent 65%
+    ),
+    /* very soft blue glow (top-right) */
+      radial-gradient(
+        900px 500px at 90% 10%,
+        rgba(99, 179, 237, 0.12),
+        transparent 60%
+      ),
+    /* neutral base */ linear-gradient(180deg, #f4f7fb, #e9eef5);
+
+  color: #0f172a;
+}
+
+.container {
+  max-width: 780px;
+  margin: 28px auto;
+  padding: 16px;
+}
+
+form {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+/* Header icons */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.top-bar img,
+.top-bar2 img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  cursor: pointer;
+  border-radius: 14px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.top-bar img:hover,
+.top-bar2 img:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 16px 26px rgba(0, 0, 0, 0.14);
+}
+
+/* Date + titles */
+#today {
+  text-align: center;
+  margin: 10px 0 6px;
+  font-weight: 600;
+  color: var(--muted);
+}
+h1 {
+  text-align: center;
+  margin: 8px 0 16px;
+  font-size: 26px;
+  line-height: 1.15;
+}
+h2 {
+  margin: 16px 0 8px;
+  font-size: 16px;
+  color: #111827;
+}
+
+/* Checkbox “cards” */
+.habit-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fbfdff;
+}
+.habit-list > div {
+  display: contents !important;
+} /* ignore your inline flex wrappers */
+.habit-list label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.15s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+.habit-list label:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(15, 23, 42, 0.08);
+}
+.habit-list input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary-dark);
+}
+/* highlight selected */
+.habit-list input[type="checkbox"]:checked + span {
+  font-weight: 700;
+}
+/* if you don't use span, still add a selected effect */
+.habit-list label:has(input:checked) {
+  border-color: rgba(127, 198, 201, 0.9);
+  box-shadow: 0 10px 18px rgba(127, 198, 201, 0.18);
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+  width: 100%;
+  padding: 12px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+  background: #ffffff;
+  font-size: 15px;
+  transition: border-color 0.2s ease, box-shadow 0.25s ease,
+    background-color 0.2s ease;
+}
+
+/* Hover (subtle blue hint) */
+input[type="text"]:hover,
+input[type="number"]:hover,
+input[type="file"]:hover {
+  border-color: rgba(127, 198, 201, 0.75);
+  background-color: #fbfeff;
+}
+
+.upload-label {
+  display: inline-block;
+  margin: 6px 0 8px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  margin-top: 14px;
+  border: 0;
+  border-radius: 14px;
+  background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+  color: #083344;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 14px 24px rgba(168, 218, 220, 0.35);
+  transition: transform 0.12s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 30px rgba(168, 218, 220, 0.42);
+  filter: saturate(1.05);
+}
+button:active {
+  transform: translateY(0px);
+}
+
+.footer {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Mobile */
+@media (max-width: 540px) {
+  .habit-list {
+    grid-template-columns: 1fr;
+  }
+  h1 {
+    font-size: 22px;
+  }
+}
